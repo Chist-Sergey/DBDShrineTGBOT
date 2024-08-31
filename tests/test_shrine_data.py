@@ -18,8 +18,14 @@ def test_return_data():
         text='/start',
         disable_notification=True,
     )
-    response: str = requests.get(
+    app.stop()
+
+    response_from_bot: str = requests.get(
         'https://api.telegram.org/{}/getUpdates'.format(
             os.getenv('TOKEN'))).text
-    print(response)
-    app.stop()
+    response_from_site: str = requests.get(
+        'https://api.nightlight.gg/v1/shrine?pretty=true').text
+
+    print(response_from_bot)
+
+    assert response_from_bot == response_from_site

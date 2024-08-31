@@ -166,5 +166,5 @@ cython_debug/
 # MacOS
 .DS_store
 
-# tests
+# pyropram
 *my_account.session
